@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbox Emprego Acessível</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Novo título acima do título do chat -->
+        <h1 class="project-title">PROJETO INGRADOR - UNIVESP</h1>
+        
+        <!-- Título do chat -->
+        <h1 class="chat-title">Chatbox Emprego Acessível</h1>
+
+        <!-- Caixa de chat única -->
+        <div class="chat-container">
+            <div class="chat-box" id="chat-box"></div> <!-- Caixa de mensagens -->
+            
+            <!-- Input e botão para envio de mensagens -->
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Digite sua mensagem..." />
+                <button onclick="sendMessage()">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função simples para enviar mensagens (Exemplo básico)
+        function sendMessage() {
+            const chatBox = document.getElementById('chat-box');
+            const userInput = document.getElementById('user-input');
+            const message = userInput.value;
+
+            if (message.trim() !== "") {
+                // Cria a mensagem do usuário
+                const userMessage = document.createElement('div');
+                userMessage.classList.add('message', 'user');
+                userMessage.textContent = message;
+                chatBox.appendChild(userMessage);
+
+                // Adiciona resposta do bot
+                const botMessage = document.createElement('div');
+                botMessage.classList.add('message', 'bot');
+                botMessage.textContent = 'Bot: Recebi sua mensagem!';
+                chatBox.appendChild(botMessage);
+
+                // Limpa o input
+                userInput.value = '';
+                
+                // Scroll para o final do chat
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>
